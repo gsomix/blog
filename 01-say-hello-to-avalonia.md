@@ -114,13 +114,18 @@ Just as simple as "configure app using appropriate backend and then start with `
 So, can we finally run the application? Not yet. `AvaloniaXamlLoader` that we see before in the `App` and `MainWindow` types requires our XAML files to be placed in the binary resource section. To do that, we should to add `<EmbeddedResource>` items to our project:
 
 ```xml
-<ItemGroup>
-    <EmbeddedResource Include="MainWindow.xaml" />
-    <EmbeddedResource Include="App.xaml" />
-</ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MainWindow.xaml">
+      <LogicalName>AvaloniaFsharpExample.MainWindow.xaml</LogicalName>
+    </EmbeddedResource>
+
+    <EmbeddedResource Include="App.xaml">
+      <LogicalName>AvaloniaFsharpExample.App.xaml</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
 ```
 
-In the resource section, these names will be formated as `[assembly].[file name]`, e.g. `AvaloniaFsharpExample.MainWindow.xaml`. `AvaloniaXamlLoader` uses full name of the type to find appropriate XAML, it looks as `[namespace].[type].xaml`. Thus it's important that the namespace containing the `App` type and the windows' types should be named exactly like the assembly, and the XAML files should be named exactly like your types.
+In the resource section, these names should be formated as `[namespace].[type].xaml`, e.g. `AvaloniaFsharpExample.MainWindow.xaml`. You can achieve it using explicit `LogacalName`.
 
 And don't forget to add source code files into project. Remember about the files order!
 
