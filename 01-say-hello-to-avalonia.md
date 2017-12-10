@@ -125,7 +125,7 @@ So, can we finally run the application? Not yet. `AvaloniaXamlLoader` that we se
   </ItemGroup>
 ```
 
-In the resource section, these names should be formated as `[namespace].[type].xaml`, e.g. `AvaloniaFsharpExample.MainWindow.xaml`. You can achieve it using explicit `LogacalName`.
+In the resource section, these names should be formated as `[namespace].[type].xaml`, e.g. `AvaloniaFsharpExample.MainWindow.xaml`. You can achieve it using explicit `LogicalName`.
 
 And don't forget to add source code files into project. Remember about the files order!
 
