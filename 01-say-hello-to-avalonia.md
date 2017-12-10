@@ -149,6 +149,8 @@ You will see the following window:
 
 Please note if you're MacOS user you need to install `gtk+3` via `brew`. It seems this issue is [fixed](https://github.com/AvaloniaUI/Avalonia/issues/1294) in the nightly build of Avalonia.
 
+![macos](img/01-macos.jpg)
+
 ## Visual designer
 
 If you're a Visual Studio user, you will probably like [Avalonia for Visual Studio](https://marketplace.visualstudio.com/items?itemName=AvaloniaTeam.AvaloniaforVisualStudio) extension. It contains visual designer for Avalonia XAML similar to WPF XAML designer.
