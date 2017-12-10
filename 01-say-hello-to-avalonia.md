@@ -45,7 +45,7 @@ type App() =
 ```
 
 ```xml
-<!-- App.xaml -->
+<!-- AvaloniaFsharpExample.App.xaml -->
 <Application xmlns="https://github.com/avaloniaui">
   <Application.Styles>
     <StyleInclude Source="resm:Avalonia.Themes.Default.DefaultTheme.xaml?assembly=Avalonia.Themes.Default"/>
@@ -65,7 +65,7 @@ It loads an appropriate `.xaml` for our type. I'll describe how it works in the 
 In the main window, we are going to show a classical "hello world" text. Let's design it!
 
 ```xml
-<!-- MainWindow.xaml -->
+<!-- AvaloniaFsharpExample.MainWindow.xaml -->
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="AvaloniaFsharpExample">
@@ -115,17 +115,17 @@ So, can we finally run the application? Not yet. `AvaloniaXamlLoader` that we se
 
 ```xml
   <ItemGroup>
-    <EmbeddedResource Include="MainWindow.xaml">
+    <EmbeddedResource Include="AvaloniaFsharpExample.MainWindow.xaml">
       <LogicalName>AvaloniaFsharpExample.MainWindow.xaml</LogicalName>
     </EmbeddedResource>
 
-    <EmbeddedResource Include="App.xaml">
+    <EmbeddedResource Include="AvaloniaFsharpExample.App.xaml">
       <LogicalName>AvaloniaFsharpExample.App.xaml</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
 ```
 
-In the resource section, these names should be formated as `[namespace].[type].xaml`, e.g. `AvaloniaFsharpExample.MainWindow.xaml`. You can achieve it using explicit `LogicalName`.
+In the resource section, these names should be formated as `[namespace].[type].xaml`, e.g. `AvaloniaFsharpExample.MainWindow.xaml`. It seems on Windows and MacOS resource embedding behaviours are different, so you need use both explicit file name and `LogicalName` in project (_I'm going to create issue about it_).
 
 And don't forget to add source code files into project. Remember about the files order!
 
