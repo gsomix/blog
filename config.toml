@@ -11,12 +11,18 @@ highlight_code = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
+# Whether to generate a RSS feed automatically
+generate_rss = true
+
+# The number of articles to include in the RSS feed
+rss_limit = 20
+
 theme = "even"
 
 taxonomies = [
     # You can enable/disable RSS
-    {name = "categories", rss = true},
-    {name = "tags", rss = true},
+    {name = "categories", rss = false},
+    {name = "tags", rss = false},
 ]
 
 extra_syntaxes = ["syntaxes"]
@@ -30,4 +36,5 @@ even_menu = [
     {url = "$BASE_URL", name = "Home"},
     {url = "$BASE_URL/categories", name = "Categories"},
     {url = "$BASE_URL/tags", name = "Tags"},
+    {url = "$BASE_URL/rss.xml", name = "RSS"},
 ]
