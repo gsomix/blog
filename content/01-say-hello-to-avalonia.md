@@ -44,7 +44,7 @@ template = "page.html"
 # tags = ["rust", "web"]
 [taxonomies]
 
-categories = ["fsharp"] 
+categories = ["english"] 
 tags = ["fsharp", "avalonia", "ui"] 
 
 # Your own data
