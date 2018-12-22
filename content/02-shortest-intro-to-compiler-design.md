@@ -53,7 +53,7 @@ tags = ["fsharp", "avalonia", "ui"]
 
 _Authors: Peter Sovietov, Evgeniy Andreev_
 
-_This article is part of [F# Advent calendar in English 2018](https://sergeytihon.com/2018/10/22/f-advent-calendar-in-english-2018/)._
+_This article is part of [F# Advent calendar in English 2018](https://sergeytihon.com/2018/10/22/f-advent-calendar-in-english-2018/). You may find original article in Russian with Python examples [here](https://github.com/true-grue/Compiler-Development/wiki/%D0%9A%D1%80%D0%B0%D1%82%D1%87%D0%B0%D0%B9%D1%88%D0%B5%D0%B5-%D0%B2%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B2-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BA%D0%BE%D0%BC%D0%BF%D0%B8%D0%BB%D1%8F%D1%82%D0%BE%D1%80%D0%B0-(Python))._
 
 ## Introduction
 
