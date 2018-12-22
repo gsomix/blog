@@ -290,4 +290,4 @@ int main(int argc, char** argv) {
 
 It seems like a good start for a more complicated compiler, right? We can go with [stack languages](http://evincarofautumn.blogspot.com/2012/02/why-concatenative-programming-matters.html) like Forth, Postscript, Joy or Factor. Even statically typed functional [language](https://kittenlang.org/) can be stack-based! Obviously another way is to increase syntax complexity. But let's leave all these questions for later posts. 
 
-We wish you success in compiler design. Merry Christmas and Happy New Нear!
+We wish you success in compiler design. Merry Christmas and Happy New Year!
