@@ -93,23 +93,23 @@ let trans (ir: IR list) =
     [ for instr in ir do
         match instr with
         | Push value -> 
-            yield sprintf "st[sp] = %d;" value
-            yield "sp += 1;"
+            yield sprintf "  st[sp] = %d;" value
+            yield "  sp += 1;"
         | Op op -> 
-            yield sprintf "st[sp - 2] = st[sp - 2] %s st[sp - 1];" op
-            yield "sp -= 1;" 
+            yield sprintf "  st[sp - 2] = st[sp - 2] %s st[sp - 1];" op
+            yield "  sp -= 1;" 
     ] |> String.concat "\n"
 ```
 
 What's going on? The `trans` function uses pattern matching to translate a list of IR instructions into C code. Pattern matching is a very convenient feature for compiler implementation. Let's see output for the `2 2 +` expression.
 
 ```fsharp
-st[sp] = 2;
-sp += 1;
-st[sp] = 2;
-sp += 1;
-st[sp - 2] = st[sp - 2] + st[sp - 1];
-sp -= 1;
+  st[sp] = 2;
+  sp += 1;
+  st[sp] = 2;
+  sp += 1;
+  st[sp - 2] = st[sp - 2] + st[sp - 1];
+  sp -= 1;
 ```
 
 The `st` array is our stack, `sp` is a pointer to the last element of the stack. What's left? We need some additional C code for compilation by real C compiler.
@@ -123,11 +123,11 @@ open System
 
 let [<Literal>] ST_SIZE = 100
 let [<Literal>] C_CODE = """#include <stdio.h>
-int main(int argc, char** argv) {{ 
-int st[{0}], sp = 0;
+  int main(int argc, char** argv) {{ 
+  int st[{0}], sp = 0;
 {1}
-printf("%d\n", st[sp - 1]);
-return 0;
+  printf("%d\n", st[sp - 1]);
+  return 0;
 }}"""
 
 type IR =
@@ -146,11 +146,11 @@ let trans (ir: IR list) =
     [ for instr in ir do
         match instr with
         | Push value -> 
-            yield sprintf "st[sp] = %d;" value
-            yield "sp += 1;"
+            yield sprintf "  st[sp] = %d;" value
+            yield "  sp += 1;"
         | Op op -> 
-            yield sprintf "st[sp - 2] = st[sp - 2] %s st[sp - 1];" op
-            yield "sp -= 1;" 
+            yield sprintf "  st[sp - 2] = st[sp - 2] %s st[sp - 1];" op
+            yield "  sp -= 1;" 
     ] |> String.concat "\n"
 
 let rpnToC (source: string) = 
@@ -165,19 +165,19 @@ The `rpnToC` function is our compilation pipeline. Literally! What's the output?
 ```c
 #include <stdio.h>
 int main(int argc, char** argv) {
-    int st[100], sp = 0;
-    st[sp] = 2;
-    sp += 1;
-    st[sp] = 2;
-    sp += 1;
-    st[sp - 2] = st[sp - 2] + st[sp - 1];
-    sp -= 1;
-    st[sp] = 3;
-    sp += 1;
-    st[sp - 2] = st[sp - 2] - st[sp - 1];
-    sp -= 1;
-    printf("%d\n", st[sp - 1]);
-    return 0;
+  int st[100], sp = 0;
+  st[sp] = 2;
+  sp += 1;
+  st[sp] = 2;
+  sp += 1;
+  st[sp - 2] = st[sp - 2] + st[sp - 1];
+  sp -= 1;
+  st[sp] = 3;
+  sp += 1;
+  st[sp - 2] = st[sp - 2] - st[sp - 1];
+  sp -= 1;
+  printf("%d\n", st[sp - 1]);
+  return 0;
 }
 ```
 
@@ -198,8 +198,8 @@ open System.Text
 let [<Literal>] C_CODE = """#include <stdio.h>
 int main(int argc, char** argv) {{
 {0}
-printf("%d\n", {1});
-return 0;
+  printf("%d\n", {1});
+  return 0;
 }}"""
 
 type IR =
@@ -224,12 +224,12 @@ let scan (source: string) =
 let trans (ir: IR list) =
     let transInstr (env: Env, code: StringBuilder) = function
     | Push value -> 
-        let code = code.AppendLine (sprintf "int t%d = %d;" env.nameCounter value)
+        let code = code.AppendLine (sprintf "  int t%d = %d;" env.nameCounter value)
         let stack = (sprintf "t%d" env.nameCounter) :: env.stack
         { env with stack = stack; nameCounter = env.nameCounter + 1}, code
     | Op op -> 
         let (leftOperand :: rightOperand :: stack) = env.stack
-        let code = code.AppendLine (sprintf "int t%d = %s %s %s;" env.nameCounter rightOperand op leftOperand)
+        let code = code.AppendLine (sprintf "  int t%d = %s %s %s;" env.nameCounter rightOperand op leftOperand)
         let stack = (sprintf "t%d" env.nameCounter) :: stack
         { env with stack = stack; nameCounter = env.nameCounter + 1}, code
 
@@ -244,7 +244,7 @@ printfn "%s" (rpnToC "2 2 + 3 -")
 
 Please pay attention that there is no stack in the produced C code. The stack processing performs in the compile-time. This is our internal stack for variables' names (not values as in the previous version):
 
-```
+```fsharp
 type Env = {
     stack: string list
     nameCounter: int
@@ -277,15 +277,17 @@ Final output:
 ```c
 #include <stdio.h>
 int main(int argc, char** argv) {
-    int t0 = 2;
-    int t1 = 2;
-    int t2 = t0 + t1;
-    int t3 = 3;
-    int t4 = t2 - t3;
+  int t0 = 2;
+  int t1 = 2;
+  int t2 = t0 + t1;
+  int t3 = 3;
+  int t4 = t2 - t3;
 
-    printf("%d\n", t4);
-    return 0;
+  printf("%d\n", t4);
+  return 0;
 }
 ```
 
-It seems it's a good start for a more complicated compiler, right? We can go with [stack languages](http://evincarofautumn.blogspot.com/2012/02/why-concatenative-programming-matters.html)) like Forth, Postscript, Joy or Factor. Even statically typed functional [language](https://kittenlang.org/) can be stack-based! Obviously another way is to increase syntax complexity. But let's leave all these questions for later posts. We wish you success in compiler design. Merry Christmas and Happy New year!
+It seems like a good start for a more complicated compiler, right? We can go with [stack languages](http://evincarofautumn.blogspot.com/2012/02/why-concatenative-programming-matters.html) like Forth, Postscript, Joy or Factor. Even statically typed functional [language](https://kittenlang.org/) can be stack-based! Obviously another way is to increase syntax complexity. But let's leave all these questions for later posts. 
+
+We wish you success in compiler design. Merry Christmas and Happy New Нear!
