@@ -232,7 +232,10 @@ let trans (ir: IR list) =
         let (leftOperand :: rightOperand :: stack) = env.stack
         let statement = 
             sprintf "  int t%d = %s %s %s;" 
-                env.nameCounter rightOperand op leftOperand
+                env.nameCounter 
+				rightOperand 
+				op 
+				leftOperand
         let code = code.AppendLine statement
         let stack = (sprintf "t%d" env.nameCounter) :: stack
         { env with stack = stack; nameCounter = env.nameCounter + 1}, code
