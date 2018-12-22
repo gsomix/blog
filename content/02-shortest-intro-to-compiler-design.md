@@ -52,11 +52,12 @@ tags = ["fsharp", "avalonia", "ui"]
 +++
 
 _Authors: Peter Sovietov, Evgeniy Andreev_
-_This article is part of [F# Advent calendar in English 2017](https://sergeytihon.com/2017/10/22/f-advent-calendar-in-english-2017/)._
+
+_This article is part of [F# Advent calendar in English 2018](https://sergeytihon.com/2018/10/22/f-advent-calendar-in-english-2018/)._
 
 ## Introduction
 
-Let's build a compiler of arithmetic expressions in F#. The compiler should translate source code in [Reverse Polish notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation) into intermediate representation (IR) suitable for a stack machine. Usually stack is implemented in virtual stack machine. However, we're not going to build an IR interpreter as you might think. We are going to translate IR right into C language code!
+Let's build a compiler of arithmetic expressions in F#. The compiler should translate source code in [Reverse Polish notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation) into intermediate representation (IR) suitable for a stack machine. However, we're not going to build an IR interpreter as you might think. We are going to translate IR right into C language code!
 
 ## Syntactic analysis
 
@@ -184,11 +185,11 @@ Let's talk a little bit about the result. It's weird that our compiler can trans
 
 ## SSA form
 
-[Static single assignment form](https://en.wikipedia.org/wiki/Static_single_assignment_form) sounds important for every compiler developer. What it is? Let's go step by step.
+[Static single assignment form](https://en.wikipedia.org/wiki/Static_single_assignment_form) sounds important for every compiler developer. What it is?
 
-For now the compiler generates plain C code without any need of the virtual machine. But why do we need to generate code working with the stack in the runtime? Let's replace the stack array with plain variables. We don't need to save on variables. For every expression we will introduce a new one, and every variable should be assigned just once. And... this is SSA form!
+For now the compiler generates plain C code without any need of the virtual machine. But why do we need to generate code working with the stack in the runtime? Let's replace the stack array with plain variables. For every expression we will introduce a new one, and every variable should be assigned just once. Just no need to skimp on names. :) 
 
-Our new compiler:
+And... this is SSA form! Our new compiler:
 
 ```fsharp
 open System
@@ -269,7 +270,7 @@ There is also some non-safe code:
 let (leftOperand :: rightOperand :: stack) = env.stack
 ```
 
-It fails when stack contains not enough elements. This is another excersise for the reader. Compilation errors are very important part of the compiler!
+It fails when stack contains not enough elements. Clear error messages are another excersise for the reader. Compilation errors are very important part of the compiler!
 
 Final output:
 
@@ -287,4 +288,4 @@ int main(int argc, char** argv) {
 }
 ```
 
-It seemsthat it's a good start for a more complicated compiler, right? We can go with stack languages (also [concatenative](http://evincarofautumn.blogspot.com/2012/02/why-concatenative-programming-matters.html)) like Forth, Postscript, Joy or Factor. [Even statically typed functional language can be stack-based!](https://kittenlang.org/) Obviously another way is to increase syntax complexity. But let's leave all these questions for later posts. We wish you success in compiler design. Merry Christmas and Happy New year!
+It seems it's a good start for a more complicated compiler, right? We can go with stack languages (also [concatenative](http://evincarofautumn.blogspot.com/2012/02/why-concatenative-programming-matters.html)) like Forth, Postscript, Joy or Factor. [Even statically typed functional language can be stack-based!](https://kittenlang.org/) Obviously another way is to increase syntax complexity. But let's leave all these questions for later posts. We wish you success in compiler design. Merry Christmas and Happy New year!
