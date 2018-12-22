@@ -52,6 +52,7 @@ tags = ["fsharp", "avalonia", "ui"]
 +++
 
 _Authors: Peter Sovietov, Evgeniy Andreev_
+
 _This article is part of [F# Advent calendar in English 2017](https://sergeytihon.com/2017/10/22/f-advent-calendar-in-english-2017/)._
 
 ## Introduction
