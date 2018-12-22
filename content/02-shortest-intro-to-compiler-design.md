@@ -57,7 +57,7 @@ _This article is part of [F# Advent calendar in English 2018](https://sergeytiho
 
 ## Introduction
 
-Let's build a compiler of arithmetic expressions in F#. The compiler should translate source code in [Reverse Polish notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation) into intermediate representation (IR) suitable for a stack machine. However, we're not going to build an IR interpreter as you might think. We are going to translate IR right into C language code!
+Let's build a compiler of arithmetic expressions in F#. The compiler should translate source code in Reverse Polish notation ([RPN](https://en.wikipedia.org/wiki/Reverse_Polish_notation)) into intermediate representation (IR) suitable for a stack machine. However, we're not going to build an IR interpreter as you might think. We are going to translate IR right into C language code!
 
 ## Syntactic analysis
 
@@ -255,11 +255,11 @@ let emptyEnv = { stack = []; nameCounter = 0 }
 
 The processing of the stack can be modeled through folding. This is a standard way in FP to perform statefull operations:
 
-```
+```fsharp
 let trans (ir: IR list) =
     let transInstr (env: Env, code: StringBuilder) = function
-    | Push value -> ...
-    | Op op -> ...
+    | Push value -> (* ... *)
+    | Op op -> (* ... *)
 
     ir |> List.fold transInstr (emptyEnv, StringBuilder())
 ```
@@ -288,4 +288,4 @@ int main(int argc, char** argv) {
 }
 ```
 
-It seems it's a good start for a more complicated compiler, right? We can go with stack languages (also [concatenative](http://evincarofautumn.blogspot.com/2012/02/why-concatenative-programming-matters.html)) like Forth, Postscript, Joy or Factor. [Even statically typed functional language can be stack-based!](https://kittenlang.org/) Obviously another way is to increase syntax complexity. But let's leave all these questions for later posts. We wish you success in compiler design. Merry Christmas and Happy New year!
+It seems it's a good start for a more complicated compiler, right? We can go with [stack languages](http://evincarofautumn.blogspot.com/2012/02/why-concatenative-programming-matters.html)) like Forth, Postscript, Joy or Factor. Even statically typed functional [language](https://kittenlang.org/) can be stack-based! Obviously another way is to increase syntax complexity. But let's leave all these questions for later posts. We wish you success in compiler design. Merry Christmas and Happy New year!
