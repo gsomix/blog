@@ -224,16 +224,18 @@ let scan (source: string) =
 let trans (ir: IR list) =
     let transInstr (env: Env, code: StringBuilder) = function
     | Push value -> 
-        let code = code.AppendLine (sprintf "  int t%d = %d;" env.nameCounter value)
+        let statement = sprintf "  int t%d = %d;" env.nameCounter value
+        let code = code.AppendLine statement
         let stack = (sprintf "t%d" env.nameCounter) :: env.stack
         { env with stack = stack; nameCounter = env.nameCounter + 1}, code
     | Op op -> 
         let (leftOperand :: rightOperand :: stack) = env.stack
-        let code = code.AppendLine (sprintf "  int t%d = %s %s %s;" env.nameCounter rightOperand op leftOperand)
+        let statement = 
+            sprintf "  int t%d = %s %s %s;" 
+                env.nameCounter rightOperand op leftOperand
+        let code = code.AppendLine statement
         let stack = (sprintf "t%d" env.nameCounter) :: stack
         { env with stack = stack; nameCounter = env.nameCounter + 1}, code
-
-    ir |> List.fold transInstr (emptyEnv, StringBuilder())
 
 let rpnToC (source: string) = 
     let env, code = source |> scan |> trans
