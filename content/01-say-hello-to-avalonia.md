@@ -218,7 +218,7 @@ That's also possible because of [hard work](https://www.visualstudio.com/en-us/n
 
 ## Conclusion
 
-Hope you enjoyed this introductory blog post. In the next articles, we'll see how to write a simple UI and bind it to the underlying data model. We will try to use different programming styles: from OOP and FP perspectives (and get hyped with Gjallarhorn). Stay tuned!
+Hope you enjoyed this introductory blog post. What's next? Please check [this article](http://reedcopsey.com/2018/12/18/2018-christmas-trees-cross-platform-edition-using-avalonia/) by Reed Copsey about functional MVU approach for Avalonia.
 
 You can find code in [repository](https://github.com/gsomix/avalonia-fsharp-example).
 
