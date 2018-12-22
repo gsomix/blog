@@ -45,7 +45,7 @@ template = "page.html"
 [taxonomies]
 
 categories = ["english"] 
-tags = ["fsharp", "avalonia", "ui"] 
+tags = ["fsharp", "compiler", "ssa"] 
 
 # Your own data
 [extra]
