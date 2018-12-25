@@ -181,7 +181,7 @@ int main(int argc, char** argv) {
 }
 ```
 
-Let's talk a little bit about the result. It's weird that our compiler can translate only constant expressions. Clearly, we can compute it right in the compile-time, therte's no need to translate it at all. But consider that some arguments can come into stack from outside, e.g. from command line arguments. OK, let's stop here. We can add command line processing to our implementation later. For now it's more important to understand the compiler design at high-level.
+Let's talk a little bit about the result. It's weird that our compiler can translate only constant expressions. Clearly, we can compute it right in the compile-time, there's no need to translate it at all. But consider that some arguments can come into stack from outside, e.g. from command line arguments. OK, let's stop here. We can add command line processing to our implementation later. For now it's more important to understand the compiler design at high-level.
 
 ## SSA form
 
