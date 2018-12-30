@@ -103,7 +103,7 @@ let trans (ir: IR list) =
 
 What's going on? The `trans` function uses pattern matching to translate a list of IR instructions into C code. Pattern matching is a very convenient feature for compiler implementation. Let's see the output for the `2 2 +` expression.
 
-```csharp
+```c
   st[sp] = 2;
   sp += 1;
   st[sp] = 2;
