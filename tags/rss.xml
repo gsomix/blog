@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on gsomix&#39;s blog</title>
+    <link>https://gsomix.github.io/blog/tags/</link>
+    <description>Recent content in Tags on gsomix&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 21 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://gsomix.github.io/blog/tags/rss.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>compiler</title>
+      <link>https://gsomix.github.io/blog/tags/compiler/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://gsomix.github.io/blog/tags/compiler/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fsharp</title>
+      <link>https://gsomix.github.io/blog/tags/fsharp/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://gsomix.github.io/blog/tags/fsharp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssa</title>
+      <link>https://gsomix.github.io/blog/tags/ssa/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://gsomix.github.io/blog/tags/ssa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>avalonia</title>
+      <link>https://gsomix.github.io/blog/tags/avalonia/</link>
+      <pubDate>Sat, 09 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://gsomix.github.io/blog/tags/avalonia/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ui</title>
+      <link>https://gsomix.github.io/blog/tags/ui/</link>
+      <pubDate>Sat, 09 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://gsomix.github.io/blog/tags/ui/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

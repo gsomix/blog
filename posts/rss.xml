@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on gsomix&#39;s blog</title>
+    <link>https://gsomix.github.io/blog/posts/</link>
+    <description>Recent content in Posts on gsomix&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 21 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://gsomix.github.io/blog/posts/rss.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Shortest introduction to the compiler design</title>
+      <link>https://gsomix.github.io/blog/02-shortest-intro-to-compiler-design/</link>
+      <pubDate>Fri, 21 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://gsomix.github.io/blog/02-shortest-intro-to-compiler-design/</guid>
+      <description>Authors: Peter Sovietov, Evgeniy Andreev
+This article is part of F# Advent calendar in English 2018. You may find original article in Russian with Python examples here.
+Introduction Let&amp;rsquo;s build a compiler of arithmetic expressions in F#. The compiler should translate source code written in Reverse Polish notation (RPN) to an intermediate representation (IR) suitable for a stack machine. However, we&amp;rsquo;re not going to build an IR interpreter as you might think.</description>
+    </item>
+    
+    <item>
+      <title>Say hello to Avalonia</title>
+      <link>https://gsomix.github.io/blog/01-say-hello-to-avalonia/</link>
+      <pubDate>Sat, 09 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://gsomix.github.io/blog/01-say-hello-to-avalonia/</guid>
+      <description>This article is part of F# Advent calendar in English 2017.
+Introduction Avalonia is a cross-platform UI .NET framework inspired by WPF and built around XAML and bindings. Why use another UI framework, you would ask? F# already has solid WPF-based infrastructure: FsXAML, FSharp.ViewModule and pretty awesome Gjallarhorn.Bindable.WPF. There is also F# support in Xamarin which allows you write UI applications for mobile devices.
+But what if you need to build a cross-platform desktop applicaton (not Windows-only as in case of WPF)?</description>
+    </item>
+    
+  </channel>
+</rss>

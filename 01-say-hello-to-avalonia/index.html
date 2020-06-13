@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Say hello to Avalonia | gsomix&#39;s blog</title>
+    <link rel="stylesheet" href="/blog/css/style.css" />
+    <link rel="stylesheet" href="/blog/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="https://gsomix.github.io/blog/">Home</a></li>
+      
+      <li><a href="https://gsomix.github.io/blog/categories/">Categories</a></li>
+      
+      <li><a href="https://gsomix.github.io/blog/tags/">Tags</a></li>
+      
+      <li><a href="https://gsomix.github.io/blog/rss.xml">RSS</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Say hello to Avalonia</span></h1>
+
+<h2 class="date">2017/12/09</h2>
+</div>
+
+<main>
+<p><em>This article is part of <a href="https://sergeytihon.com/2017/10/22/f-advent-calendar-in-english-2017/">F# Advent calendar in English 2017</a>.</em></p>
+<h2 id="introduction">Introduction</h2>
+<p><a href="http://avaloniaui.net/">Avalonia</a> is a cross-platform UI .NET framework inspired by WPF and built around XAML and bindings. Why use another UI framework, you would ask? F# already has solid WPF-based infrastructure: <a href="https://github.com/fsprojects/FsXaml">FsXAML</a>, <a href="https://github.com/fsprojects/FSharp.ViewModule">FSharp.ViewModule</a> and pretty awesome <a href="https://github.com/ReedCopsey/Gjallarhorn.Bindable/tree/dc8e0ee75db5a428d901f1b826f0ec21b357ca25/src/Gjallarhorn.Bindable.Wpf">Gjallarhorn.Bindable.WPF</a>. There is also <a href="https://developer.xamarin.com/guides/cross-platform/fsharp/fsharp_support_overview/">F# support</a> in Xamarin which allows you write UI applications for mobile devices.</p>
+<p>But what if you need to build a cross-platform desktop applicaton (not Windows-only as in case of WPF)? Maybe you also want to use the modern .NET Core platform? Run the same UI code on mobile devices? Avalonia for the rescue!</p>
+<h2 id="lets-start">Let&rsquo;s start</h2>
+<p>OK, let&rsquo;s start with an empty console .NET Core application. I usually use .NET Core CLI and wonderful <a href="http://ionide.io/">Ionide</a> extension for code editing (<em>thanks a lot Krzysztof!</em>). Works like a charm.</p>
+<pre><code class="language-console" data-lang="console">$ mkdir avalonia-fsharp-example
+$ cd avalonia-fsharp-example
+$ dotnet new console -lang f#
+</code></pre><p>Then add Avalonia packages to the project.</p>
+<pre><code class="language-console" data-lang="console">$ dotnet add package Avalonia
+$ dotnet add package Avalonia.Desktop
+</code></pre><p>All native dependencies for your platform will be installed automagically.</p>
+<p>Then you need to create the core of our application and initialize Avalonia. Create two files:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#008000">// App.fs
+</span><span style="color:#008000"></span><span style="color:#00f">namespace</span> AvaloniaFsharpExample
+
+<span style="color:#00f">open</span> Avalonia
+<span style="color:#00f">open</span> Avalonia.Markup.Xaml
+
+<span style="color:#00f">type</span> <span style="color:#2b91af">App</span>() =
+    <span style="color:#00f">inherit</span> Application()
+    <span style="color:#00f">override</span> this.Initialize() =
+        AvaloniaXamlLoader.Load(this)
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000">&lt;!-- AvaloniaFsharpExample.App.xaml --&gt;</span>
+&lt;Application xmlns=<span style="color:#a31515">&#34;https://github.com/avaloniaui&#34;</span>&gt;
+  &lt;Application.Styles&gt;
+    &lt;StyleInclude Source=<span style="color:#a31515">&#34;resm:Avalonia.Themes.Default.DefaultTheme.xaml?assembly=Avalonia.Themes.Default&#34;</span>/&gt;
+    &lt;StyleInclude Source=<span style="color:#a31515">&#34;resm:Avalonia.Themes.Default.Accents.BaseLight.xaml?assembly=Avalonia.Themes.Default&#34;</span>/&gt;
+  &lt;/Application.Styles&gt;
+&lt;/Application&gt;
+</code></pre></div><p>Hopefully you remember how to use OOP features in the F#! <code>App</code> type is the core of the application &ndash; subtype of Avalonia&rsquo;s <code>Application</code> class. Avalonia uses XAML files for UI design: controls, windows, styles and bindings. In 2017, XAML may look a little clunky, but I still found it very convenient for UI design and especially if you already familiar with WPF or Xamarin. So you need to override <code>Initialize</code> method and load <code>App.xaml</code> file containing style settings for our application:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp">AvaloniaXamlLoader.Load(this)
+</code></pre></div><p>It loads an appropriate <code>.xaml</code> for our type. I&rsquo;ll describe how it works in the next section. For now you need to create main window of the application.</p>
+<p>In the main window, we are going to show a classical &ldquo;hello world&rdquo; text. Let&rsquo;s design it!</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000">&lt;!-- AvaloniaFsharpExample.MainWindow.xaml --&gt;</span>
+&lt;Window xmlns=<span style="color:#a31515">&#34;https://github.com/avaloniaui&#34;</span>
+        xmlns:x=<span style="color:#a31515">&#34;http://schemas.microsoft.com/winfx/2006/xaml&#34;</span>
+        Title=<span style="color:#a31515">&#34;AvaloniaFsharpExample&#34;</span>&gt;
+    Hello World from Avalonia and F#!
+&lt;/Window&gt;
+</code></pre></div><p>You also need to load the XAML file into the application:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#008000">// MainWindow.fs
+</span><span style="color:#008000"></span><span style="color:#00f">namespace</span> AvaloniaFsharpExample
+
+<span style="color:#00f">open</span> Avalonia.Controls
+<span style="color:#00f">open</span> Avalonia.Markup.Xaml
+
+<span style="color:#00f">type</span> <span style="color:#2b91af">MainWindow</span> () <span style="color:#00f">as</span> this =
+    <span style="color:#00f">inherit</span> Window()
+
+    <span style="color:#00f">do</span> this.InitializeComponent()
+    <span style="color:#00f">member</span> this.InitializeComponent() =
+        AvaloniaXamlLoader.Load(this)
+</code></pre></div><p>The logic is the same as for <code>App.fs</code> &ndash; we&rsquo;re loading a XAML file during the type initialization. Final step required to unite all the parts of the application is to write a proper entry point:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fsharp" data-lang="fsharp"><span style="color:#008000">// Program.fs
+</span><span style="color:#008000"></span><span style="color:#00f">open</span> System
+<span style="color:#00f">open</span> Avalonia
+
+<span style="color:#00f">open</span> AvaloniaFsharpExample
+
+[&lt;EntryPoint&gt;]
+<span style="color:#00f">let</span> main argv =
+    AppBuilder.Configure&lt;App&gt;()
+        .UsePlatformDetect()
+        .Start&lt;MainWindow&gt;()
+    0
+</code></pre></div><p>Just as simple as &ldquo;configure app using appropriate backend and then start with <code>MainWindow</code>&rdquo;. What does mean &ldquo;backend&rdquo;? At the lowest level, Avalonia uses different subsystems to work with windows and draw controls on them. Those parts are platform specific, but backend can be automagically detected. You can read more about Avalonia&rsquo;s architecture in the <a href="http://avaloniaui.net/spec/architecture.html">documentation</a> (a little outdated).</p>
+<h2 id="say-hello">Say hello</h2>
+<p>So, can we finally run the application? Not yet. <code>AvaloniaXamlLoader</code> that we see before in the <code>App</code> and <code>MainWindow</code> types requires our XAML files to be placed in the binary resource section. To do that, we should to add <code>&lt;EmbeddedResource&gt;</code> items to our project:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">  &lt;ItemGroup&gt;
+    &lt;EmbeddedResource Include=<span style="color:#a31515">&#34;AvaloniaFsharpExample.MainWindow.xaml&#34;</span>&gt;
+      &lt;LogicalName&gt;AvaloniaFsharpExample.MainWindow.xaml&lt;/LogicalName&gt;
+    &lt;/EmbeddedResource&gt;
+
+    &lt;EmbeddedResource Include=<span style="color:#a31515">&#34;AvaloniaFsharpExample.App.xaml&#34;</span>&gt;
+      &lt;LogicalName&gt;AvaloniaFsharpExample.App.xaml&lt;/LogicalName&gt;
+    &lt;/EmbeddedResource&gt;
+  &lt;/ItemGroup&gt;
+</code></pre></div><p>In the resource section, these names should be formated as <code>[namespace].[type].xaml</code>, e.g. <code>AvaloniaFsharpExample.MainWindow.xaml</code>. It seems on Windows and MacOS resource embedding behaviours are different, so you need use both explicit file name and <code>LogicalName</code> in project (<em>I&rsquo;m going to create issue about it</em>).</p>
+<p>And don&rsquo;t forget to add source code files into project. Remember about the files order!</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">&lt;ItemGroup&gt;
+    &lt;Compile Include=<span style="color:#a31515">&#34;MainWindow.fs&#34;</span> /&gt;
+    &lt;Compile Include=<span style="color:#a31515">&#34;App.fs&#34;</span> /&gt;
+    &lt;Compile Include=<span style="color:#a31515">&#34;Program.fs&#34;</span> /&gt;
+&lt;/ItemGroup&gt;
+</code></pre></div><p>Finally we can run it!</p>
+<pre><code class="language-console" data-lang="console">$ dotnet run
+</code></pre><p>You will see the following window:</p>
+<p><img src="../img/01-window.png" alt="window"></p>
+<p>Please note if you&rsquo;re MacOS user you need to install <code>gtk+3</code> via <code>brew</code>. It seems this issue is <a href="https://github.com/AvaloniaUI/Avalonia/issues/1294">fixed</a> in the nightly build of Avalonia.</p>
+<p><img src="../img/01-macos.jpg" alt="macos"></p>
+<h2 id="visual-designer">Visual designer</h2>
+<p>If you&rsquo;re a Visual Studio user, you will probably like <a href="https://marketplace.visualstudio.com/items?itemName=AvaloniaTeam.AvaloniaforVisualStudio">Avalonia for Visual Studio</a> extension. It contains visual designer for Avalonia XAML similar to WPF XAML designer.</p>
+<p>Unfortunately, according to <a href="https://github.com/AvaloniaUI/Avalonia/issues/1134">this issue</a>, XAML designer doesn&rsquo;t yet work on pure .NET Core applications. Therefore, to make it work, you need to add .NET Framework target to our <code>fsproj</code>.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">&lt;TargetFrameworks&gt;netcoreapp2.0;net461&lt;/TargetFrameworks&gt;
+</code></pre></div><p>Make sure that you use <code>TargetFramework_s_</code>. Then open project with Visual Studio and you will see following:</p>
+<p><img src="../img/01-vsdesigner.png" alt="Visual Studio designer"></p>
+<p>That&rsquo;s also possible because of <a href="https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes#fsharpnetcoreimprovements">hard work</a> of Visual F# contributors and MSFT team. Thanks you guys!</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Hope you enjoyed this introductory blog post. What&rsquo;s next? Please check <a href="http://reedcopsey.com/2018/12/18/2018-christmas-trees-cross-platform-edition-using-avalonia/">this article</a> by Reed Copsey about functional MVU approach for Avalonia.</p>
+<p>You can find code in <a href="https://github.com/gsomix/avalonia-fsharp-example">repository</a>.</p>
+<p>I also want to say thanks to <a href="https://github.com/orgs/AvaloniaUI/people">Avalonia team</a> for great job.</p>
+
+</main>
+
+  <footer>
+  
+  
+  <hr/>
+  © gsomix 2017 &ndash; 2020 | <a href="https://github.com/gsomix">Github</a>
+  
+  </footer>
+  </body>
+</html>
+
