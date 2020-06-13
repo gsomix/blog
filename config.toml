@@ -1,40 +1,53 @@
-# The URL the site will be built for
-base_url = "https://gsomix.github.io/blog"
+baseurl = "https://gsomix.github.io/"
+languageCode = "en-us"
+title = "gsomix's blog"
+theme = "hugo-xmin"
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+footnotereturnlinkcontents = "↩"
 
-# Whether to automatically compile all Sass files in the sass directory
-compile_sass = true
+[permalinks]
+    posts = "/blog/:filename/"
 
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Gutenberg
-highlight_code = true
+[taxonomies]
+  category = "categories"
+  tag = "tags"
 
-# Whether to build a search index to be used later on by a JavaScript library
-build_search_index = true
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+[[menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 2
+[[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 3
+[[menu.main]]
+    name = "RSS"
+    url = "/rss.xml"
 
-# Whether to generate a RSS feed automatically
-generate_rss = true
+[params]
+    description = "A website built through Hugo and Hugo XMin theme."
+    footer = "&copy; gsomix 2017 -- 2020 | [Github](https://github.com/gsomix)"
 
-# The number of articles to include in the RSS feed
-rss_limit = 20
+[outputs]
+    home = [ "RSS", "HTML"]
 
-theme = "even"
+[outputFormats]
+[outputFormats.RSS]
+    mediatype = "application/rss"
+    baseName = "rss"
 
-taxonomies = [
-    # You can enable/disable RSS
-    {name = "categories", rss = false},
-    {name = "tags", rss = false},
-]
-
-extra_syntaxes = ["syntaxes"]
-
-[extra]
-# Put all your custom variables here
-
-even_title = "Blog"
-
-even_menu = [
-    {url = "$BASE_URL", name = "Home"},
-    {url = "$BASE_URL/categories", name = "Categories"},
-    {url = "$BASE_URL/tags", name = "Tags"},
-    {url = "$BASE_URL/rss.xml", name = "RSS"},
-]
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "vs"
+    tabWidth = 4

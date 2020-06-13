@@ -1,2 +1,15 @@
-public/
-themes/
+# Hugo default output directory
+/public
+
+# Themes
+/themes
+
+## OS Files
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# OSX
+.DS_Store
