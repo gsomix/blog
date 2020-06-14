@@ -1,6 +1,6 @@
 baseurl = "https://gsomix.github.io/blog/"
 languageCode = "en-us"
-title = "gsomix's blog"
+title = "gsomix.github.io"
 theme = "hugo-xmin"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 footnotereturnlinkcontents = "↩"
