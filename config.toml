@@ -14,19 +14,19 @@ footnotereturnlinkcontents = "↩"
 
 [[menu.main]]
     name = "Home"
-    url = "/"
+    url = ""
     weight = 1
 [[menu.main]]
     name = "Categories"
-    url = "/categories/"
+    url = "categories/"
     weight = 2
 [[menu.main]]
     name = "Tags"
-    url = "/tags/"
+    url = "tags/"
     weight = 3
 [[menu.main]]
     name = "RSS"
-    url = "/rss.xml"
+    url = "rss.xml"
 
 [params]
     description = "A website built through Hugo and Hugo XMin theme."
