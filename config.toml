@@ -1,4 +1,4 @@
-baseurl = "https://gsomix.github.io/"
+baseurl = "https://gsomix.github.io/blog/"
 languageCode = "en-us"
 title = "gsomix's blog"
 theme = "hugo-xmin"
@@ -6,7 +6,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 footnotereturnlinkcontents = "↩"
 
 [permalinks]
-    posts = "/blog/:filename/"
+    posts = "/:filename/"
 
 [taxonomies]
   category = "categories"
