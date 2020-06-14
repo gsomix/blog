@@ -6,10 +6,19 @@
     <description>Recent content in english on gsomix&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jun 2020 13:42:00 +0400</lastBuildDate>
     
 	<atom:link href="https://gsomix.github.io/blog/categories/english/rss.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Moving to Hugo</title>
+      <link>https://gsomix.github.io/blog/03-moving-to-hugo/</link>
+      <pubDate>Sun, 14 Jun 2020 13:42:00 +0400</pubDate>
+      
+      <guid>https://gsomix.github.io/blog/03-moving-to-hugo/</guid>
+      <description>Nothing particular interesting here. I decide to move my blog to Hugo static-site generator and beatifully simple XMin theme. Hope all links and RSS feed work as usual.</description>
+    </item>
     
     <item>
       <title>Shortest introduction to the compiler design</title>

@@ -3,8 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://gsomix.github.io/blog/tags/blog/</loc>
+    <lastmod>2020-06-14T13:42:00+04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://gsomix.github.io/blog/categories/</loc>
-    <lastmod>2018-12-21T00:00:00+00:00</lastmod>
+    <lastmod>2020-06-14T13:42:00+04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gsomix.github.io/blog/categories/english/</loc>
+    <lastmod>2020-06-14T13:42:00+04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gsomix.github.io/blog/</loc>
+    <lastmod>2020-06-14T13:42:00+04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gsomix.github.io/blog/tags/hugo/</loc>
+    <lastmod>2020-06-14T13:42:00+04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gsomix.github.io/blog/03-moving-to-hugo/</loc>
+    <lastmod>2020-06-14T13:42:00+04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gsomix.github.io/blog/posts/</loc>
+    <lastmod>2020-06-14T13:42:00+04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gsomix.github.io/blog/tags/</loc>
+    <lastmod>2020-06-14T13:42:00+04:00</lastmod>
   </url>
   
   <url>
@@ -13,22 +48,7 @@
   </url>
   
   <url>
-    <loc>https://gsomix.github.io/blog/categories/english/</loc>
-    <lastmod>2018-12-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://gsomix.github.io/blog/tags/fsharp/</loc>
-    <lastmod>2018-12-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://gsomix.github.io/blog/</loc>
-    <lastmod>2018-12-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://gsomix.github.io/blog/posts/</loc>
     <lastmod>2018-12-21T00:00:00+00:00</lastmod>
   </url>
   
@@ -39,11 +59,6 @@
   
   <url>
     <loc>https://gsomix.github.io/blog/tags/ssa/</loc>
-    <lastmod>2018-12-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://gsomix.github.io/blog/tags/</loc>
     <lastmod>2018-12-21T00:00:00+00:00</lastmod>
   </url>
   

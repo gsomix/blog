@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blog on gsomix&#39;s blog</title>
+    <link>https://gsomix.github.io/blog/tags/blog/</link>
+    <description>Recent content in blog on gsomix&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 14 Jun 2020 13:42:00 +0400</lastBuildDate>
+    
+	<atom:link href="https://gsomix.github.io/blog/tags/blog/rss.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Moving to Hugo</title>
+      <link>https://gsomix.github.io/blog/03-moving-to-hugo/</link>
+      <pubDate>Sun, 14 Jun 2020 13:42:00 +0400</pubDate>
+      
+      <guid>https://gsomix.github.io/blog/03-moving-to-hugo/</guid>
+      <description>Nothing particular interesting here. I decide to move my blog to Hugo static-site generator and beatifully simple XMin theme. Hope all links and RSS feed work as usual.</description>
+    </item>
+    
+  </channel>
+</rss>
