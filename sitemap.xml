@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://gsomix.github.io/blog/</loc>
+    <lastmod>2020-06-14T13:42:00+04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://gsomix.github.io/blog/tags/blog/</loc>
     <lastmod>2020-06-14T13:42:00+04:00</lastmod>
   </url>
@@ -14,11 +19,6 @@
   
   <url>
     <loc>https://gsomix.github.io/blog/categories/english/</loc>
-    <lastmod>2020-06-14T13:42:00+04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://gsomix.github.io/blog/</loc>
     <lastmod>2020-06-14T13:42:00+04:00</lastmod>
   </url>
   

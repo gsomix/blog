@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>fsharp on gsomix&#39;s blog</title>
+    <title>fsharp on gsomix.github.io</title>
     <link>https://gsomix.github.io/blog/tags/fsharp/</link>
-    <description>Recent content in fsharp on gsomix&#39;s blog</description>
+    <description>Recent content in fsharp on gsomix.github.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 21 Dec 2018 00:00:00 +0000</lastBuildDate>
